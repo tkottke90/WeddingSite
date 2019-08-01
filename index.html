@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Theme: https://www.schemecolor.com/pastel-paper-bags-color-combination.php -->
   <link rel="stylesheet" href="/index.css">
-  <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico&display=swap" rel="stylesheet">
   <title>Kottke To My Heart</title>
-  <script scr="index.js"></script>
+  <script type="module" src="index.js"></script>
 </head>
 <body>
   <template>
@@ -33,26 +33,58 @@
       <div class="reception-info">
         <h5 class="info-when-label text--fancy">When:</h5>
         <h5 class="info-where-label text--fancy">Where:</h5>
-        <p  color="primary" class="info-when">Saturday, September 21st, 2019 @ 3pm</p>
+        <p class="info-when">Saturday, September 21st, 2019 @ 3pm</p>
         <div class="info-where"> 
-          <p color="primary">Yahara Terrace (previously Treysta on the Water)</p>
-          <p color="primary">320 W Broadway</p>
-          <p color="primary">Monona, WI 53716</p>
+          <p>Yahara Terrace (previously Treysta on the Water)</p>
+          <p>320 W Broadway</p>
+          <p>Monona, WI 53716</p>
         </div>
       </div>
       <div class="actions">
-        <button>Click here to RSVP</button>
+        <button id="rsvp" color="primary">Click here to RSVP</button>
       </div>
 
     </section>
 
-    <section class="card details">
-      <h5>Whoa you guys are married?!?!</h5>
-      <p>Yeah...it was both a long time coming and over in aa flash</p>
-    </section>
+    <div class="overlay-container">
+      <div id="dialog-overlay" class="overlay" onclick="hideOverlay()"></div>
+        <form class="dialog">
+          <!-- First Name -->
+          <div class="form-field form-field--text">
+            <label class="text--fancy" for="first_name">First Name*:</label>
+            <input name="first_name" required>
+            <p class="error">Please add your first name</p>
+          </div>
 
-    <div class="overlay">
-      <section class="dialog"></section>
+          <!-- Last Name -->
+          <div class="form-field form-field--text">
+            <label class="text--fancy" for="last_name">Last Name*:</label>
+            <input name="last_name" required>
+            <p class="error">Please add your last name</p>
+          </div>
+
+          <!-- Count -->
+          <div class="form-field form-field--number text--fancy">
+            <label class="text--fancy" for="count">Number Attending*:</label>
+            <input name="count" type="number" required>
+            <p class="error">Please add the number attending</p>
+          </div>
+
+          <!-- Preferred Drink -->
+          <p class="drink-descriptor">We are looking to provide libations for the party but are unsure what people would like.  If you have any suggestions you can leave them below:</p>
+          <div class="form-field form-field--text">
+            <label class="text--fancy" for="count">Suggestions:</label>
+            <input name="count" type="text">
+          </div>
+
+          <p class="required-footnote">* - required</p>
+
+          <!-- Submit -->
+          <div class="actions">
+            <button id="cancel-btn" type="reset" color="outline">Cancel</button>
+            <button id="submit-btn" color="primary">Submit</button>
+          </div>
+        </form>
     </div>
 </body>
 </html>
