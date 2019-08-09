@@ -1,13 +1,17 @@
 :root {
-  --theme-primary: #9999cc;
-  --theme-accent: #c8e1e6;
+  --theme-primary: #2eb8b8;
+  --theme-accent: #FFDF00;
   --theme-warn: orange;
-  --theme-background: #dfe7e8;
+  --theme-background: #fff;
+
+  --theme-on-primary: #fff;
+  --theme-on-accent: #544444;
 
   --typography-h1: 6rem;
   --typography-h2: 3.75rem;
 
-  --typography-family: 'Kalam', sans-serif;;
+  --typography-family: 'Pacifico', cursive;
+  --typography-family-fallback: 'Open Sans', sans-serif;
 }
 
 * {
@@ -32,11 +36,22 @@ h5[color="primary"], h6[color="primary"], p[color="primary"], header[color="prim
   color: var(--theme-primary);
 }
 
-button {
+button[color="primary"]{
+  border-radius: 7px;
+  padding: 0.25rem 1rem;
+  border: 2px solid var(--theme-on-primary);
+  background: var(--theme-primary);
+  color: var(--theme-on-primary);
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+button[color="outline"] {
   border-radius: 7px;
   padding: 0.25rem 1rem;
   border: 2px solid var(--theme-primary);
-  background: transparent;
+  background: var(--theme-on-primary);
   color: var(--theme-primary);
   font-weight: 800;
   font-size: 1.1rem;
@@ -48,6 +63,7 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: var(--theme-background);
+  position: relative;
 }
 
 
@@ -66,6 +82,7 @@ header h6 {
 
 .text--fancy {
   font-family: var(--typography-family);
+  font-weight: 200;
 }
 
 .card {
@@ -73,7 +90,11 @@ header h6 {
   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
   max-width: 600px;
   padding: 1rem;
-  background-color: #fff;
+}
+
+.rsvp {
+  background-color: var(--theme-primary);
+  color: var(--theme-on-primary);
 }
 
 .rsvp > h4 {
@@ -81,7 +102,7 @@ header h6 {
 }
 
 .rsvp .text--fancy {
-  color: var(--theme-primary);
+  color: var(--theme-on-primary);
 }
 
 .reception-info {
@@ -120,11 +141,133 @@ header h6 {
   margin-top: 1rem;
 }
 
-.overlay{
-  display: none;
+.overlay-container{
+  position: fixed;
   top: 0;
   left: 0;
-  
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  transform: scale(0);
+
+  opacity: 0;
+  transition: opacity 500ms, transform 1ms;
+}
+
+.overlay-container[show] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.overlay-container[show].fadeout {
+  animation: fadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+}
+
+.overlay-container[show] .dialog {
+  transform: scale(1)
+}
+
+.dialog-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  
+  z-index: 10;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog {
+  width: calc(100vw - 25%);
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+  
+  padding: 1rem;
+  z-index: 100;
+
+  transform: scale(0);
+  transition: transform 750ms;
+}
+
+form > .actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+form[dirty] > .form-field > input:invalid {
+  border: 2px solid var(--theme-warn);
+}
+
+form[dirty] > .form-field > input:invalid + p.error {
+  display: block;
+}
+
+.form-field {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-row: 1fr 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.form-field > input {
+  border: 2px solid var(--theme-primary);
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.form-field > .error {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.form-field--text > label, .form-field--number > label {
+  text-align: right;
+  margin-right: 1rem;
+  color: var(--theme-primary);
+}
+
+.error {
+  display: none;
+  color: var(--theme-warn);
+}
+
+.drink-descriptor {
+  margin-bottom: 1rem;
+  padding: 0.25rem;
+  color: var(--theme-primary);
+}
+
+.required-footnote {
+  text-align: right;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 1rem;
+}
+
+@keyframes zoomOut {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  90% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(0);
+  }
 }
