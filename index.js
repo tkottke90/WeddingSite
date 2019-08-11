@@ -1,10 +1,16 @@
 import {html, render} from 'https://unpkg.com/lit-html?module';
 
+let formSubmitted = false;
+
 // RSVP Button to open overlay
 const btn_rsvp = document.querySelector('#rsvp');
 btn_rsvp.onclick = (e) => {
   const overlay = document.querySelector('.overlay-container');
-  overlay.setAttribute('show', '');
+  overlay.classList.add('show-overlay');
+
+  const modal = document.querySelector( formSubmitted ? '.complete' : '.dialog');
+  modal.classList.add('visible');
+
 }
 
 // Cancel Button in Form
@@ -16,7 +22,7 @@ btn_cancel.onclick = (e) => {
   e.target.form.removeAttribute('dirty');
 
   const overlay = document.querySelector('.overlay-container');
-  overlay.removeAttribute('show');
+  overlay.classList.remove('show-overlay');
 }
 
 // Submit form
@@ -35,36 +41,29 @@ btn_submit.onclick = async (e) => {
     const formData = elements.filter( elem => !!elem.name).reduce((acc, cur) => ({ ...acc, [cur.name]: cur.value }), {});
     
 
-    // const result = await fetch('https://script.google.com/macros/s/AKfycbx8fXtddNpbps9zn4ISoUPKBowiEGYltH3aHH6sNJsfayf2HSPS/exec', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: '*/*' },
-    //   body: JSON.stringify(formData)
-    // });
+    const result = await fetch('https://script.google.com/macros/s/AKfycbx8fXtddNpbps9zn4ISoUPKBowiEGYltH3aHH6sNJsfayf2HSPS/exec', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: '*/*' },
+      body: JSON.stringify(formData)
+    });
 
-    // console.log(result);
+    if (result.ok) {
 
-    // if (result.ok) {
-      const complete = html`
-        <div class="complete">
-          <h4>Thanks for the RSVP!</h4>
-        </div>
-      `;
+      const thankYou = document.querySelector('.complete');
+      formSubmitted = true;
+      form.classList.remove('visible');
+      thankYou.classList.add('visible');
+      
+      thankYou.addEventListener('transitionend', function(e) {
 
-      // const modal = document.querySelector('.modal-content');
+        setTimeout(function() {
+          const overlay = document.querySelector('.overlay-container');
+          
+          
+          overlay.classList.remove('show-overlay');
+        }, 1500);
+      });
 
-      // render(complete, modal);
-
-      // render(complete, parent);  
-
-      setTimeout(() => {
-        const modal = document.querySelector('.overlay-container');
-        modal.classList.add('fadeout');
-        
-        modal.addEventListener('animationend', () => {
-          modal.classList.remove('fadeout');
-          modal.removeAttribute('show');
-        }, false);
-      }, 1500);
-    // }
+    }
   }
 }

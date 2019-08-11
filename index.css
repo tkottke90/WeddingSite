@@ -17,9 +17,15 @@
 * {
   margin: 0;
   box-sizing: border-box;
-  font-size: 16px;
+}
 
-  font-family: sans-serif;
+body {
+  padding: 1rem;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--theme-background);
+  position: relative;
+  font-size: 16px;
 }
 
 h1 { font-size: 6rem; }
@@ -56,14 +62,6 @@ button[color="outline"] {
   font-weight: 800;
   font-size: 1.1rem;
   cursor: pointer;
-}
-
-body {
-  padding: 1rem;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--theme-background);
-  position: relative;
 }
 
 
@@ -108,7 +106,7 @@ header h6 {
 .reception-info {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 2rem 4rem ;
+  grid-template-rows: 3rem 5rem ;
 }
 
 .reception-info > .info-when-label {
@@ -126,9 +124,22 @@ header h6 {
   grid-row: 1;
 }
 
+.info-when {
+  font-size: 1.5rem;
+  margin: auto 0;
+}
+
 .reception-info > .info-where {
   grid-column: 2;
   grid-row: 2;
+}
+
+.info-where {
+  margin-top: 0.5rem;
+}
+
+.info-where > p {
+  font-size: 1.25rem;
 }
 
 .info > h5:nth-child(even) {
@@ -151,21 +162,14 @@ header h6 {
   transform: scale(0);
 
   opacity: 0;
-  transition: opacity 500ms, transform 1ms;
+  transition: opacity 500ms 250ms;
 }
 
-.overlay-container[show] {
+.overlay-container.show-overlay {
   opacity: 1;
   transform: scale(1);
 }
 
-.overlay-container[show].fadeout {
-  animation: fadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
-}
-
-.overlay-container[show] .dialog {
-  transform: scale(1)
-}
 
 .dialog-overlay {
   position: relative;
@@ -187,11 +191,20 @@ header h6 {
   box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
   
   padding: 1rem;
+  position: absolute;
   z-index: 100;
 
-  transform: scale(0);
-  transition: transform 750ms;
+  opacity: 0;
+  transform: scaleY(0);
+
+  transition: opacity 100ms, transform 500ms;
 }
+
+.overlay-container.show-overlay .dialog.visible {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
 
 form > .actions {
   display: flex;
@@ -209,7 +222,7 @@ form[dirty] > .form-field > input:invalid + p.error {
 .form-field {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-row: 1fr 0.75rem;
+  grid-template-rows: 1fr 0.75rem;
   margin-bottom: 1rem;
 }
 
@@ -247,27 +260,61 @@ form[dirty] > .form-field > input:invalid + p.error {
   margin-bottom: 1rem;
 }
 
-@keyframes zoomOut {
-  0% {
-    transform: scale(1);
-  }
+.complete {
+  border-radius: 5px;
 
-  100% {
-    transform: scale(0);
-  }
+  position: absolute;
+  z-index: 10;
+  opacity: 0;
+
+  background-color: #fff;
+  color: var(--theme-primary);
+  font-family: var(--typography-family);
+  font-weight: normal;
+
+  padding: 1rem;
+
+  transform: scaleY(0);
+  transition: opacity 500ms 500ms, transform 500ms;
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-    transform: scale(1);
+.overlay-container.show-overlay .complete.visible {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+@media screen and (min-width: 400px) {
+  
+  .reception-info {
+    grid-template-rows: 3rem 6.5rem;
   }
 
-  90% {
-    opacity: 0;
+  .info-when {
+    font-size: 1.1rem;
   }
 
-  100% {
-    transform: scale(0);
+  .info-where{
+    margin-top: 0.75rem;
   }
+
+  .info-where > p {
+    font-size: 1.1rem
+  }
+
+  #rsvp {
+    padding: 1rem 1.5rem;
+  }
+
+  .dialog {
+    width: 95vw;
+  }
+
+  .form-field {
+    grid-template-columns: 10rem 1fr;
+  }
+
+  .form-field > input {
+    width: 100%;
+  }
+
 }
