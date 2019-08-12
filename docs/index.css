@@ -283,7 +283,7 @@ form[dirty] > .form-field > input:invalid + p.error {
   transform: scaleY(1);
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (max-width: 600px) {
   
   .reception-info {
     grid-template-rows: 3rem 6.5rem;
