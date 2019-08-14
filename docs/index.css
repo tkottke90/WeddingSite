@@ -283,7 +283,7 @@ form[dirty] > .form-field > input:invalid + p.error {
   transform: scaleY(1);
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
   
   header > h3 {
     font-size: 2.25rem;
