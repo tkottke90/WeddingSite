@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,38 +11,74 @@
   <title>Kottke To My Heart</title>
   <script type="module" src="index.js"></script>
 </head>
+
 <body>
-    <header>
-      <h3 class="text--fancy">Thomas and Katie</h3>
-    </header>
+  <header>
+    <h3 class="text--fancy">Thomas and Katie</h3>
+  </header>
 
-    <section class="card rsvp">
-      <h4 class="text--fancy">Reception</h4>
-      <div class="reception-info">
-        <h5 class="info-when-label text--fancy">When:</h5>
-        <h5 class="info-where-label text--fancy">Where:</h5>
-        <p class="info-when">Saturday, September 21st, 2019 @ 3pm</p>
-        <div class="info-where"> 
-          <p>Yahara Terrace (previously Treysta on the Water)</p>
-          <p>320 W Broadway</p>
-          <p>Monona, WI 53716</p>
-        </div>
+  <section class="card rsvp">
+    <h4 class="text--fancy">Reception</h4>
+    <div class="reception-info">
+      <h5 class="info-when-label text--fancy">When:</h5>
+      <h5 class="info-where-label text--fancy">Where:</h5>
+      <p class="info-when">Saturday, September 21st, 2019 @ 5pm</p>
+      <div class="info-where">
+        <p>Yahara Terrace (previously Treysta on the Water)</p>
+        <p>320 W Broadway</p>
+        <p>Monona, WI 53716</p>
       </div>
-      <div class="actions">
-        <button id="rsvp" color="primary">Click here to RSVP</button>
-      </div>
+    </div>
+    <div class="actions">
+      <button id="rsvp" color="primary">Click here to RSVP</button>
+    </div>
 
-    </section>
+  </section>
 
-    <!-- <section class="card party-info">
-      <h4 class="text--fancy">Party Information</h4>
-      <div class="party-info--info-grid info-grid">
-        More to come!
-        
-      </div>
-    </section>
+  <section class="card party-info">
+    <h4 class="text--fancy">Party Information</h4>
+    <div class="party-info--info-grid info-grid">
+      <table>
+        <tr>
+          <td class="table-label text--fancy">Dinner</td>
+          <td class="table-data--text">Check back for more info</td>
+        </tr>
+        <tr class="lodging">
+          <td class="table-label text--fancy">Lodging</td>
+          <td class="table-data">
+            <ul>
+              <li>
+                <a
+                  href="https://www.radissonhotels.com/en-us/hotels/country-inn-madison-wi?cid=a:se+b:gmb+c:amer+i:local+e:cis+d:us+h:WIMONONA">Country
+                  Inn and Suites by Radison</a>
+              </li>
+              <li>
+                <a
+                  href="https://www.wyndhamhotels.com/americinn/monona-wisconsin/americinn-lodge-and-suites-madison-south/overview?CID=LC:AA::GGL:RIO:National:52059&iata=00093796">AmericInn
+                  by Wyndham</a>
+              </li>
+              <li><a
+                  href="https://www.google.com/maps/search/hotels+near+me/@43.0468066,-89.340936,14z/data=!3m1!4b1">Other
+                  options</a></li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
 
-    <section class="card pictures">
+  <section class="card gifts">
+    <h4 class="text--fancy">Note on Gifts:</h4>
+    <p>The most important thing is to have you with us on our special day.</p>
+    <p>You'll make our memories complete in every single way.</p>
+    <p>We do not have a gift list and we know you will understand.</p>
+    <p>Our house and contents are complete with pots and plates and pans.</p>
+    <p>But should you really want to give and celebrate this way. A gift of money would be lovely for a rainy day</p>
+    <p color="accent">(Please do not feel obligated to buy a gift. It's your presence and not your present that is
+      important to us)</p>
+  </section>
+
+  <!-- <section class="card pictures">
       <h4 class="text--fancy">Pictures</h4>
       <div class="pictures--img-grid"></div>
     </section>
@@ -51,54 +88,56 @@
       
     </section> -->
 
-    <!-- <footer>
+  <!-- <footer>
     
     </footer> -->
 
-    <div class="overlay-container">
-      <div class="dialog-overlay">
-        <form class="dialog">
-          <!-- First Name -->
-          <div class="form-field form-field--text">
-            <label class="text--fancy" for="first_name">First Name*:</label>
-            <input name="first_name" required>
-            <p class="error">Please add your first name</p>
-          </div>
-
-          <!-- Last Name -->
-          <div class="form-field form-field--text">
-            <label class="text--fancy" for="last_name">Last Name*:</label>
-            <input name="last_name" required>
-            <p class="error">Please add your last name</p>
-          </div>
-
-          <!-- Count -->
-          <div class="form-field form-field--number text--fancy">
-            <label class="text--fancy" for="count">Number Attending*:</label>
-            <input name="count" type="number" required>
-            <p class="error">Please add the number attending</p>
-          </div>
-
-          <!-- Preferred Drink -->
-          <p class="drink-descriptor">We are looking to provide refreshments for the party but are unsure what people would like.  If you have any suggestions you can leave them below:</p>
-          <div class="form-field form-field--text">
-            <label class="text--fancy" for="count">Suggestions:</label>
-            <input name="drink" type="text">
-          </div>
-
-          <p class="required-footnote">* - required</p>
-
-          <!-- Submit -->
-          <div class="actions">
-            <button id="cancel-btn" type="reset" color="outline">Cancel</button>
-            <button id="submit-btn" color="primary">Submit</button>
-          </div>
-        </form>
-
-        <div class="complete">
-          <h4>Thanks for the RSVP!</h4>
+  <div class="overlay-container">
+    <div class="dialog-overlay">
+      <form class="dialog">
+        <!-- First Name -->
+        <div class="form-field form-field--text">
+          <label class="text--fancy" for="first_name">First Name*:</label>
+          <input name="first_name" required>
+          <p class="error">Please add your first name</p>
         </div>
+
+        <!-- Last Name -->
+        <div class="form-field form-field--text">
+          <label class="text--fancy" for="last_name">Last Name*:</label>
+          <input name="last_name" required>
+          <p class="error">Please add your last name</p>
+        </div>
+
+        <!-- Count -->
+        <div class="form-field form-field--number text--fancy">
+          <label class="text--fancy" for="count">Number Attending*:</label>
+          <input name="count" type="number" required>
+          <p class="error">Please add the number attending</p>
+        </div>
+
+        <!-- Preferred Drink -->
+        <p class="drink-descriptor">We are looking to provide refreshments for the party but are unsure what people
+          would like. If you have any suggestions you can leave them below:</p>
+        <div class="form-field form-field--text">
+          <label class="text--fancy" for="count">Suggestions:</label>
+          <input name="drink" type="text">
+        </div>
+
+        <p class="required-footnote">* - required</p>
+
+        <!-- Submit -->
+        <div class="actions">
+          <button id="cancel-btn" type="reset" color="outline">Cancel</button>
+          <button id="submit-btn" color="primary">Submit</button>
+        </div>
+      </form>
+
+      <div class="complete">
+        <h4>Thanks for the RSVP!</h4>
       </div>
     </div>
+  </div>
 </body>
+
 </html>
