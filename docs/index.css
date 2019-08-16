@@ -42,6 +42,11 @@ h5[color="primary"], h6[color="primary"], p[color="primary"], header[color="prim
   color: var(--theme-primary);
 }
 
+h1[color="accent"], h2[color="accent"], h3[color="accent"], h4[color="accent"]
+h5[color="accent"], h6[color="accent"], p[color="accent"], header[color="accent"] {
+  color: var(--theme-accent);
+}
+
 button[color="primary"]{
   border-radius: 7px;
   padding: 0.25rem 1rem;
@@ -283,6 +288,44 @@ form[dirty] > .form-field > input:invalid + p.error {
   transform: scaleY(1);
 }
 
+.party-info {
+  background: var(--theme-primary);
+  color: var(--theme-on-primary);
+}
+
+.table-label {
+  font-size: 1.5rem;
+}
+
+.table-data--text {
+  padding-left: 2rem;
+  font-size: 1.25rem;
+}
+
+.lodging > .table-data li {
+  margin: 0.5rem;
+}
+
+.lodging > .table-data li > a {
+  color: #fff;
+}
+
+.launch {
+  fill: var(--theme-on-primary);
+  cursor: pointer;
+}
+
+.gifts {
+  background-color: var(--theme-primary);
+  color: var(--theme-on-primary);
+}
+
+.gifts p{
+  text-align: center;
+  max-width: 450px;
+  margin: 0 auto 1rem auto;
+}
+
 @media screen and (max-width: 600px) {
   
   header > h3 {
@@ -291,6 +334,11 @@ form[dirty] > .form-field > input:invalid + p.error {
 
   .card {
     padding: 0.5rem;
+  }
+
+  .table-data--text {
+    padding-left: 1rem;
+    font-size: 1rem;
   }
 
   .reception-info {
